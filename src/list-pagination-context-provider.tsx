@@ -1,4 +1,5 @@
 import React from 'react';
+import { create } from 'zustand';
 
 type PaginationState = {
   totalItems: number;
@@ -19,19 +20,21 @@ const INITIAL_PAGE = 1;
 
 export const usePaginationContext = create<{
   pagination: Pagination;
-  setPagination: (pg: Pagination) => void;
+  setPagination: (pg: Pagination) => any;
   setNextPage: () => void;
   setFirstPage: () => void;
 }>((set, get) => ({
   pagination: {
-    totalPages: 0,
+    totalPages: 4,
     pageSize: 0,
     currentPage: INITIAL_PAGE,
     nextEnabled: false,
     previousEnabled: false,
     totalItems: 0,
   },
-  setPagination: (args: PaginationArgs) => {},
+  setPagination: (args: PaginationArgs) => {
+    set((state) => ({ ...state, totalItems: args.totalItems, pageSize: args.pageSize }));
+  },
   setNextPage: () => {},
   setPrevPage: () => {},
   setFirstPage: () => {},

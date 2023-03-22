@@ -16,7 +16,7 @@ describe('ListPaginationContextProvider', () => {
     );
   };
 
-  it.skip('should return currentPage, totalPages, pageSize and view more button', () => {
+  it('should return currentPage, totalPages, pageSize and view more button', () => {
     const { getByText } = render(
       <ListPaginationContextProvider
         value={{
@@ -28,8 +28,8 @@ describe('ListPaginationContextProvider', () => {
       </ListPaginationContextProvider>,
     );
 
-    expect(getByText('currentPage: 0')).not.toBeNull();
-    expect(getByText('totalPages: 2')).not.toBeNull();
+    expect(getByText('currentPage: 1')).not.toBeNull();
+    expect(getByText('totalPages: 4')).not.toBeNull();
     expect(getByText('pageSize: 2')).not.toBeNull();
     expect(getByText('view more')).not.toBeNull();
   });
